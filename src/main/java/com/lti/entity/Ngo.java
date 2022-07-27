@@ -20,12 +20,12 @@ public class Ngo {
 	@GeneratedValue(generator = "ngo_seq", strategy = GenerationType.SEQUENCE)
 	int ngoId;
 
-	String ngoName;
+	String name;
 	String email;
 	String password;
 	String address;
 	String description;
-	int ngoContact;
+	String contact;
 	boolean isVerified;
 
 	@OneToMany(mappedBy = "ngo")
@@ -46,11 +46,11 @@ public class Ngo {
 	}
 
 	public String getNgoName() {
-		return ngoName;
+		return name;
 	}
 
 	public void setNgoName(String ngoName) {
-		this.ngoName = ngoName;
+		this.name = ngoName;
 	}
 
 	public String getEmail() {
@@ -85,12 +85,20 @@ public class Ngo {
 		this.description = description;
 	}
 
-	public int getNgoContact() {
-		return ngoContact;
+	public String getNgoContact() {
+		return contact;
 	}
 
-	public void setNgoContact(int ngoContact) {
-		this.ngoContact = ngoContact;
+	public void setNgoContact(String ngoContact) {
+		this.contact = ngoContact;
+	}
+
+	public List<Accomodation> getAccomodations() {
+		return accomodations;
+	}
+
+	public void setAccomodations(List<Accomodation> accomodations) {
+		this.accomodations = accomodations;
 	}
 
 	public boolean isVerified() {
