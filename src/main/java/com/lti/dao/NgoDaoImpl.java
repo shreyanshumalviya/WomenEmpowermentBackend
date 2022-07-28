@@ -34,4 +34,7 @@ public class NgoDaoImpl implements NgoDao {
 		return query.getSingleResult();
 	}
 
+	public Ngo getNgoById(int ngoId) {
+		return em.find(Ngo.class, ngoId);
+	}
 }

@@ -29,19 +29,22 @@ public class NgoController {
 
 	@Autowired
 	NgoServiceImpl ngoService;
-	
-	@RequestMapping (value = "/register", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public Ngo signup(@RequestBody Ngo ngo) {
 		System.out.println("here");
 
 		return ngoService.register(ngo);
-	}	
-	
-	@RequestMapping (value = "/login", method = RequestMethod.POST)
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public Ngo login(@RequestBody NgoLogin ngoLogin) {
 		System.out.println("here2");
+		try {
+			return ngoService.login(ngoLogin);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 
-		return ngoService.login(ngoLogin);
-	}	
-	
 }

@@ -1,26 +1,11 @@
-package com.lti.entity;
+package com.lti.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-@Entity
-public class Courses {
-
-	@Id
-	@SequenceGenerator(name = "course_seq", initialValue = 100, allocationSize = 1)
-	@GeneratedValue(generator = "course_seq", strategy = GenerationType.SEQUENCE)
+import com.lti.entity.Course;
+import com.lti.entity.Mode;
+public class CourseRegisterDTO {
 	int courseId;
-
 	String courseTitle;
 	String description;
 	LocalDate startDate;
@@ -30,12 +15,7 @@ public class Courses {
 	boolean jobOffered;
 	int vacancy;
 
-	@ManyToOne
-	@JoinColumn(name = "ngoId")
-	Ngo ngo;
-
-	@OneToMany(mappedBy = "course")
-	List<Enrollment> enrollments;
+	int ngo_id;
 
 	public int getCourseId() {
 		return courseId;
@@ -109,20 +89,27 @@ public class Courses {
 		this.vacancy = vacancy;
 	}
 
-	public Ngo getNgo() {
-		return ngo;
+	public int getNgo_id() {
+		return ngo_id;
 	}
 
-	public void setNgo(Ngo ngo) {
-		this.ngo = ngo;
+	public void setNgo_id(int ngo_id) {
+		this.ngo_id = ngo_id;
 	}
-
-	public List<Enrollment> getEnroll() {
-		return enrollments;
-	}
-
-	public void setEnroll(List<Enrollment> enroll) {
-		this.enrollments = enroll;
+	
+	public Course toCourse() {
+		Course course = new Course();
+		course.setCourseId(courseId);
+		course.setCourseMode(courseMode);
+		course.setCourseTitle(courseTitle);
+		course.setDescription(description);
+		course.setDurationMonth(durationMonth);
+		course.setJobOffered(jobOffered);
+		course.setLocation(location);
+		course.setStartDate(startDate);
+		course.setVacancy(vacancy);
+		
+		return course;
 	}
 
 }

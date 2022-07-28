@@ -8,7 +8,7 @@ import com.lti.dto.NgoLogin;
 import com.lti.entity.Ngo;
 
 @Service
-public class NgoServiceImpl implements NgoDao {
+public class NgoServiceImpl implements NgoService {
 
 	@Autowired
 	NgoDao dao;

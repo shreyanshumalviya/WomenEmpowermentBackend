@@ -22,7 +22,7 @@ public class Enrollment {
 
 	@ManyToOne
 	@JoinColumn(name = "courseId")
-	Courses course;
+	Course course;
 
 	@ManyToOne
 	@JoinColumn(name = "userId")
@@ -44,11 +44,11 @@ public class Enrollment {
 		this.registrationDate = registrationDate;
 	}
 
-	public Courses getCourse() {
+	public Course getCourse() {
 		return course;
 	}
 
-	public void setCourse(Courses course) {
+	public void setCourse(Course course) {
 		this.course = course;
 	}
 
