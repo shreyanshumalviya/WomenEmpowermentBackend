@@ -28,6 +28,7 @@ public class CourseServiceImpl implements CourseService {
 		}
 
 		Course course = courseDTO.toCourse();
+		System.out.println(courseDTO.getNgo_id()+ " shreyanshu");
 		Ngo ngo = ngoDao.getNgoById(courseDTO.getNgo_id());
 		System.out.println(ngo.getEmail());
 		try {

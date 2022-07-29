@@ -15,7 +15,7 @@ public class NgoTest {
 	@Test
 	public void test() {
 		Ngo ngo = new Ngo();
-		ngo.setNgoName("ngo name");
+		ngo.setName("ngo name");
 		dao.register(ngo);
 	}
 

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.NgoLogin;
+import com.lti.dto.NgoRegisterDto;
 import com.lti.entity.Ngo;
 import com.lti.entity.User;
 import com.lti.service.NgoService;
@@ -30,11 +31,11 @@ public class NgoController {
 	@Autowired
 	NgoServiceImpl ngoService;
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public Ngo signup(@RequestBody Ngo ngo) {
+	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = {"application/json"})
+	public Ngo signup(@RequestBody NgoRegisterDto ngo) {
 		System.out.println("here");
 
-		return ngoService.register(ngo);
+		return ngoService.register(ngo.toNgo());
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)

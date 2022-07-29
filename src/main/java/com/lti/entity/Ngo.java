@@ -50,13 +50,21 @@ public class Ngo {
 	public void setNgoId(int ngoId) {
 		this.ngoId = ngoId;
 	}
-
-	public String getNgoName() {
+	
+	public String getName() {
 		return name;
 	}
 
-	public void setNgoName(String ngoName) {
-		this.name = ngoName;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	public String getEmail() {
