@@ -3,6 +3,7 @@ package com.lti.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "tbl_ngo")
@@ -29,12 +32,15 @@ public class Ngo {
 	boolean isVerified;
 
 	@OneToMany(mappedBy = "ngo")
-	List<Courses> course;
+	@JsonBackReference
+	List<Course> course;
 
 	@OneToOne(mappedBy = "ngo")
+	@JsonBackReference
 	NgoDocuments ngoDoc;
 
 	@OneToMany(mappedBy = "ngo")
+	@JsonBackReference
 	List<Accomodation> accomodations;
 
 	public int getNgoId() {
@@ -44,13 +50,21 @@ public class Ngo {
 	public void setNgoId(int ngoId) {
 		this.ngoId = ngoId;
 	}
-
-	public String getNgoName() {
+	
+	public String getName() {
 		return name;
 	}
 
-	public void setNgoName(String ngoName) {
-		this.name = ngoName;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	public String getEmail() {
@@ -117,21 +131,14 @@ public class Ngo {
 		this.ngoDoc = ngoDoc;
 	}
 
-	public List<Courses> getCourse() {
+	public List<Course> getCourse() {
 		return course;
 	}
 
-	public void setCourse(List<Courses> course) {
+	public void setCourse(List<Course> course) {
 		this.course = course;
 	}
 
-	public List<Accomodation> getAccomodation() {
-		return accomodations;
-	}
-
-	public void setAccomodation(List<Accomodation> accomodation) {
-		this.accomodations = accomodation;
-	}
 
 	
 }

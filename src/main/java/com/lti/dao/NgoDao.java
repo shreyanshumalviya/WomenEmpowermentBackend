@@ -7,4 +7,6 @@ public interface NgoDao {
 	Ngo register(Ngo ngo);
 
 	Ngo login(NgoLogin ngoLogin);
+	
+	Ngo getNgoById(int ngoId);
 }
