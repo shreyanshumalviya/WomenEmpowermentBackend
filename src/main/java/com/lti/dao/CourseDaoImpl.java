@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.lti.entity.Course;
 import com.lti.entity.Enrollment;
 import com.lti.entity.Ngo;
+import com.lti.entity.User;
 
 @Repository
 public class CourseDaoImpl implements CourseDao {
@@ -32,7 +33,30 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public List<Enrollment> listUserEnrolledForCourse(int courseId) {
 		
-		return em.find(Course.class, courseId).getEnroll();
+		return em.find(Course.class, courseId).getEnrollments();
+	}
+
+	@Override
+	public List<Course> listAllCourses() {
+		// TODO Auto-generated method stub
+		String jpql="select c from Course c";
+		TypedQuery<Course> query=em.createQuery(jpql, Course.class);
+		return query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public Enrollment enrollForCourse(Enrollment enrollment) {
+		// TODO Auto-generated method stub
+		em.persist(enrollment);
+		return null;
+	}
+//	temprory remove once user dao is ready
+	public User getNgoById(int ngoId) {
+		return em.find(User.class, ngoId);
+	}
+	public Course getCourseById(int courseId) {
+		return em.find(Course.class, courseId);
 	}
 
 }

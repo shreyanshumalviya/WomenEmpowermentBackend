@@ -11,5 +11,7 @@ public interface CourseService {
 	Course createCourse(CourseRegisterDTO course);
 	List<Course> listCoursesByNgo(int ngoId);
 	List<Enrollment> listUserEnrolledForCourse(int courseId);
+	List<Course> listAllCourses();
+	Enrollment enrollForCourse(int courseId,int userId);
 	
 }
