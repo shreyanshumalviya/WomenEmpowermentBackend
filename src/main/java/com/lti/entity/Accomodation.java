@@ -19,6 +19,7 @@ public class Accomodation {
 	@GeneratedValue(generator = "accomodationId_seq", strategy = GenerationType.SEQUENCE)
 	int accomodationId;
 
+	String name;
 	String state;
 	String city;
 	String addressLine1;
@@ -38,6 +39,23 @@ public class Accomodation {
 	List<AccomodationStatus> accomodationStatuses;
 	
 	
+
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<AccomodationStatus> getAccomodationStatuses() {
+		return accomodationStatuses;
+	}
+
+	public void setAccomodationStatuses(List<AccomodationStatus> accomodationStatuses) {
+		this.accomodationStatuses = accomodationStatuses;
+	}
 
 	public int getAccomodationId() {
 		return accomodationId;

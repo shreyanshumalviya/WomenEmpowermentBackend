@@ -139,13 +139,6 @@ public class Ngo {
 		this.course = course;
 	}
 
-	public List<Accomodation> getAccomodation() {
-		return accomodations;
-	}
-
-	public void setAccomodation(List<Accomodation> accomodation) {
-		this.accomodations = accomodation;
-	}
 
 	
 }
