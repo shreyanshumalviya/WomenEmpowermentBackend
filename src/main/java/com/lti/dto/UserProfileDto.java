@@ -1,26 +1,20 @@
-package com.lti.entity;
+package com.lti.dto;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import com.lti.entity.AccomodationStatus;
+import com.lti.entity.Disability;
+import com.lti.entity.Document;
+import com.lti.entity.Enrollment;
+import com.lti.entity.Gender;
+import com.lti.entity.JobStatus;
+import com.lti.entity.MaritalStatus;
+import com.lti.entity.ResidenceArea;
+import com.lti.entity.SukanyaAccount;
+import com.lti.entity.User;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity
-@Table(name = "tbl_user")
-public class User {
-
-	@Id
-	@SequenceGenerator(name = "user_seq", initialValue = 1000001, allocationSize = 1)
-	@GeneratedValue(generator = "user_seq", strategy = GenerationType.SEQUENCE)
+public class UserProfileDto {
 	int userId;
 
 	String firstName;
@@ -28,7 +22,6 @@ public class User {
 	String lastName;
 
 	String email;
-	String password;
 	String contactNo;
 	String aadhaarNo;
 	String panNo;
@@ -42,21 +35,36 @@ public class User {
 	Disability disabled;
 	boolean isVerified;
 
-	@OneToOne(mappedBy = "user")
-	@JsonBackReference
 	Document document;
 
-	@OneToMany(mappedBy = "user")
-	@JsonBackReference
 	List<SukanyaAccount> sukanyaAccount;
 
-	@OneToMany(mappedBy = "user")
-	@JsonBackReference
 	List<Enrollment> enroll;
 
-	@OneToMany(mappedBy = "user")
-	@JsonBackReference
 	List<AccomodationStatus> accomodationStatus;
+
+	public UserProfileDto(User user) {
+		this.userId = user.getUserId();
+		this.firstName = user.getFirstName();
+		this.lastName = user.getLastName();
+		this.middleName = user.getMiddleName();
+		this.email = user.getEmail();
+		this.contactNo = user.getContactNo();
+		this.aadhaarNo = user.getAadhaarNo();
+		this.panNo = user.getPanNo();
+		this.dob = user.getDob();
+		this.gender = user.getGender();
+		this.jobStatus = user.getJobStatus();
+		this.jobTitle = user.getJobTitle();
+		this.salary = user.getSalary();
+		this.residenceArea = user.getResidenceArea();
+		this.maritalStatus = user.getMaritalStatus();
+		this.isVerified = user.isVerified();
+		this.document = user.getDocument();
+		this.sukanyaAccount = user.getSukanyaAccount();
+		this.enroll = user.getEnroll();
+		this.accomodationStatus = user.getAccomodationStatus();
+	}
 
 	public int getUserId() {
 		return userId;
@@ -96,14 +104,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getContactNo() {
