@@ -1,21 +1,23 @@
 package com.lti;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+//import static org.junit.Assert.*;
+//
+//import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.lti.dao.NgoDao;
 import com.lti.entity.Ngo;
-
+@SpringBootTest
 public class NgoTest {
+
 
 	@Autowired
 	NgoDao dao;
-	@Test
+	@org.junit.jupiter.api.Test
 	public void test() {
 		Ngo ngo = new Ngo();
-		ngo.setNgoName("ngo name");
+		ngo.setName("ngo name");
 		dao.register(ngo);
 	}
 

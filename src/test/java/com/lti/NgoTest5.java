@@ -4,11 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import com.lti.dao.NgoDao;
 import com.lti.dao.NgoDaoImpl;
 import com.lti.entity.Ngo;
 
+@SpringBootTest
 class NgoTest5 {
 
 
@@ -18,7 +20,7 @@ class NgoTest5 {
 	@Test
 	void test() {
 		Ngo ngo = new Ngo();
-		ngo.setNgoName("ngo name");
+		ngo.setName("ngo name");
 		try {
 			System.out.println("Shreyanshu "+dao);
 		dao.register(ngo);

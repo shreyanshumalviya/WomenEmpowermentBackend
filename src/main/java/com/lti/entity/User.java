@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "tbl_user")
 public class User {
@@ -39,15 +41,19 @@ public class User {
 	MaritalStatus maritalStatus;
 
 	@OneToOne(mappedBy = "user")
+	@JsonBackReference
 	Document document;
 
 	@OneToMany(mappedBy = "user")
+	@JsonBackReference
 	List<SukanyaAccount> sukanyaAccount;
 
 	@OneToMany(mappedBy = "user")
+	@JsonBackReference
 	List<Enrollment> enroll;
 
 	@OneToMany(mappedBy = "user")
+	@JsonBackReference
 	List<AccomodationStatus> accomodationStatus;
 
 	public int getUserId() {
