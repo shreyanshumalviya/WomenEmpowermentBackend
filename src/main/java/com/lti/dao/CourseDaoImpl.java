@@ -48,8 +48,7 @@ public class CourseDaoImpl implements CourseDao {
 	@Transactional
 	public Enrollment enrollForCourse(Enrollment enrollment) {
 		// TODO Auto-generated method stub
-		em.persist(enrollment);
-		return null;
+		return em.merge(enrollment);
 	}
 //	temprory remove once user dao is ready
 	public User getNgoById(int ngoId) {
