@@ -1,24 +1,14 @@
-package com.lti.entity;
+package com.lti.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import com.lti.entity.Disability;
+import com.lti.entity.Gender;
+import com.lti.entity.JobStatus;
+import com.lti.entity.MaritalStatus;
+import com.lti.entity.ResidenceArea;
 
-@Entity
-@Table(name = "tbl_user")
-public class User {
-
-	@Id
-	@SequenceGenerator(name = "user_seq", initialValue = 1000001, allocationSize = 1)
-	@GeneratedValue(generator = "user_seq", strategy = GenerationType.SEQUENCE)
+public class UpdateUserDto {
 	int userId;
 
 	String firstName;
@@ -26,7 +16,6 @@ public class User {
 	String lastName;
 
 	String email;
-	String password;
 	String contactNo;
 	String aadhaarNo;
 	String panNo;
@@ -38,19 +27,6 @@ public class User {
 	ResidenceArea residenceArea;
 	MaritalStatus maritalStatus;
 	Disability disabled;
-	boolean isVerified;
-
-	@OneToOne(mappedBy = "user")
-	Document document;
-
-	@OneToMany(mappedBy = "user")
-	List<SukanyaAccount> sukanyaAccount;
-
-	@OneToMany(mappedBy = "user")
-	List<Enrollment> enroll;
-
-	@OneToMany(mappedBy = "user")
-	List<AccomodationStatus> accomodationStatus;
 
 	public int getUserId() {
 		return userId;
@@ -90,14 +66,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getContactNo() {
@@ -186,46 +154,6 @@ public class User {
 
 	public void setDisabled(Disability disabled) {
 		this.disabled = disabled;
-	}
-
-	public boolean isVerified() {
-		return isVerified;
-	}
-
-	public void setVerified(boolean isVerified) {
-		this.isVerified = isVerified;
-	}
-
-	public Document getDocument() {
-		return document;
-	}
-
-	public void setDocument(Document document) {
-		this.document = document;
-	}
-
-	public List<SukanyaAccount> getSukanyaAccount() {
-		return sukanyaAccount;
-	}
-
-	public void setSukanyaAccount(List<SukanyaAccount> sukanyaAccount) {
-		this.sukanyaAccount = sukanyaAccount;
-	}
-
-	public List<Enrollment> getEnroll() {
-		return enroll;
-	}
-
-	public void setEnroll(List<Enrollment> enroll) {
-		this.enroll = enroll;
-	}
-
-	public List<AccomodationStatus> getAccomodationStatus() {
-		return accomodationStatus;
-	}
-
-	public void setAccomodationStatus(List<AccomodationStatus> accomodationStatus) {
-		this.accomodationStatus = accomodationStatus;
 	}
 
 }
