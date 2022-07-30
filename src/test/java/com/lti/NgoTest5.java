@@ -18,7 +18,7 @@ class NgoTest5 {
 	@Test
 	void test() {
 		Ngo ngo = new Ngo();
-		ngo.setNgoName("ngo name");
+		ngo.setName("ngo name");
 		try {
 			System.out.println("Shreyanshu "+dao);
 		dao.register(ngo);

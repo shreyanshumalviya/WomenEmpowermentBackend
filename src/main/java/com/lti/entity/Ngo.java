@@ -51,12 +51,12 @@ public class Ngo {
 		this.ngoId = ngoId;
 	}
 
-	public String getNgoName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setNgoName(String ngoName) {
-		this.name = ngoName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getEmail() {
@@ -91,20 +91,12 @@ public class Ngo {
 		this.description = description;
 	}
 
-	public String getNgoContact() {
+	public String getContact() {
 		return contact;
 	}
 
-	public void setNgoContact(String ngoContact) {
-		this.contact = ngoContact;
-	}
-
-	public List<Accomodation> getAccomodations() {
-		return accomodations;
-	}
-
-	public void setAccomodations(List<Accomodation> accomodations) {
-		this.accomodations = accomodations;
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 	public boolean isVerified() {
@@ -115,14 +107,6 @@ public class Ngo {
 		this.isVerified = isVerified;
 	}
 
-	public NgoDocuments getNgoDoc() {
-		return ngoDoc;
-	}
-
-	public void setNgoDoc(NgoDocuments ngoDoc) {
-		this.ngoDoc = ngoDoc;
-	}
-
 	public List<Course> getCourse() {
 		return course;
 	}
@@ -131,13 +115,22 @@ public class Ngo {
 		this.course = course;
 	}
 
-	public List<Accomodation> getAccomodation() {
+	public NgoDocuments getNgoDoc() {
+		return ngoDoc;
+	}
+
+	public void setNgoDoc(NgoDocuments ngoDoc) {
+		this.ngoDoc = ngoDoc;
+	}
+
+	public List<Accomodation> getAccomodations() {
 		return accomodations;
 	}
 
-	public void setAccomodation(List<Accomodation> accomodation) {
-		this.accomodations = accomodation;
+	public void setAccomodations(List<Accomodation> accomodations) {
+		this.accomodations = accomodations;
 	}
 
-	
+
+
 }
