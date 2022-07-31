@@ -11,4 +11,9 @@ public interface CourseDao {
 	Course createCourse(Course course);
 	List<Course> listCoursesByNgo(int ngoId);
 	List<Enrollment> listUserEnrolledForCourse(int courseId);
+	List<Course> listAllCourses();
+	Enrollment enrollForCourse(Enrollment enrollment);
+	public Course getCourseById(int courseId);
+	public User getNgoById(int ngoId);
+	
 }

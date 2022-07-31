@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.CourseRegisterDTO;
 import com.lti.entity.Course;
+import com.lti.entity.Enrollment;
 import com.lti.service.CourseServiceImpl;
 
 @RestController
@@ -33,5 +34,19 @@ public class CourseController {
 	@GetMapping("/list-course-by-ngo/{ngoId}")
 	public List<Course> listCourse(@PathVariable int ngoId){
 		return courseService.listCoursesByNgo(ngoId);
+	}
+	
+	@GetMapping("/list-enrollments-for-course/{courseId}")
+	public List<Enrollment> listEnrollmentsForCourse(@PathVariable int courseId){
+		return courseService.listUserEnrolledForCourse(courseId);
+		
+	}
+	@GetMapping("/list-course")
+	public List<Course> listAllCourses(){
+		return courseService.listAllCourses();
+	}
+	@GetMapping("/{courseId}/enroll/{userId}")
+	public Enrollment enroll(@PathVariable int courseId,@PathVariable int userId) {
+		return courseService.enrollForCourse(courseId,1);
 	}
 }

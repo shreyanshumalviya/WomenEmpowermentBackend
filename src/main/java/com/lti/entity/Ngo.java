@@ -51,6 +51,7 @@ public class Ngo {
 		this.ngoId = ngoId;
 	}
 
+	
 	public String getName() {
 		return name;
 	}
@@ -130,7 +131,5 @@ public class Ngo {
 	public void setAccomodations(List<Accomodation> accomodations) {
 		this.accomodations = accomodations;
 	}
-
-
 
 }

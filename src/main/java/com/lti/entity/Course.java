@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Course {
 
@@ -36,10 +38,19 @@ public class Course {
 	Ngo ngo;
 
 	@OneToMany(mappedBy = "course")
+	@JsonBackReference
 	List<Enrollment> enrollments;
 
 	public int getCourseId() {
 		return courseId;
+	}
+
+	public List<Enrollment> getEnrollments() {
+		return enrollments;
+	}
+
+	public void setEnrollments(List<Enrollment> enrollments) {
+		this.enrollments = enrollments;
 	}
 
 	public void setCourseId(int courseId) {
@@ -117,13 +128,4 @@ public class Course {
 	public void setNgo(Ngo ngo) {
 		this.ngo = ngo;
 	}
-
-	public List<Enrollment> getEnroll() {
-		return enrollments;
-	}
-
-	public void setEnroll(List<Enrollment> enroll) {
-		this.enrollments = enroll;
-	}
-
 }
