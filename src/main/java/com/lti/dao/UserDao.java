@@ -3,6 +3,7 @@ package com.lti.dao;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
+import com.lti.entity.User;
 
 public interface UserDao {
 	UserProfileDto addUser(UserRegisterDto user);
@@ -11,4 +12,5 @@ public interface UserDao {
 	boolean login(int userId, String password);
 	boolean changePassword(int userId, String password, String newPassword);
 	boolean resetPassword(int userId);
+	User getUserById(int userId);
 }

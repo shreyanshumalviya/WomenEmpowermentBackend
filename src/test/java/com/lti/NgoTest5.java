@@ -28,5 +28,14 @@ class NgoTest5 {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	void testCourseCounts() {
+		System.out.println(dao.getCoursesCount(1002));
+		assertEquals(1, 
+				dao.getCoursesCount(1002));
+	}
+	
+	
 
 }

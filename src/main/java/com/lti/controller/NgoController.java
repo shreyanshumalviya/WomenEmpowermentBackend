@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.NgoLogin;
 import com.lti.dto.NgoRegisterDto;
+import com.lti.dto.NgoStatusDTO;
 import com.lti.entity.Ngo;
 import com.lti.entity.User;
 import com.lti.service.NgoService;
@@ -45,6 +46,11 @@ public class NgoController {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@RequestMapping(value = "/status/{ngoId}", method = RequestMethod.GET)
+	public NgoStatusDTO status(@PathVariable int ngoId) {
+		return ngoService.getNgoStatus(ngoId);
 	}
 
 }
