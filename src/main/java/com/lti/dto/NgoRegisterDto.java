@@ -9,6 +9,7 @@ public class NgoRegisterDto {
 	String address;
 	String description;
 	String contact;
+	boolean isVerified;
 
 	public String getName() {
 		return name;
