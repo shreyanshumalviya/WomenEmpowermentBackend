@@ -47,7 +47,7 @@ public class NgoServiceImpl implements NgoService {
 			}
 		}
 		
-		List<Accomodation> accomodations = ngo.getAccomodations();
+		List<Accomodation> accomodations = ngo.getAccomodation();
 		ngoStatus.accomodations = accomodations.size();
 		
 		for(Accomodation accomodation: accomodations) {
