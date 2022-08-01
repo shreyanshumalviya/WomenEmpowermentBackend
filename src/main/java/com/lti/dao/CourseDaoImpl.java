@@ -40,7 +40,7 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public List<Course> listAllCourses() {
 		// TODO Auto-generated method stub
-		String jpql="select c from Course c where startDate<:today";
+		String jpql="select c from Course c where startDate>:today";
 		TypedQuery<Course> query=em.createQuery(jpql, Course.class);
 		query.setParameter("today", LocalDate.now());
 		return query.getResultList();
