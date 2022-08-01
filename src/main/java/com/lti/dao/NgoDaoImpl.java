@@ -37,4 +37,42 @@ public class NgoDaoImpl implements NgoDao {
 	public Ngo getNgoById(int ngoId) {
 		return em.find(Ngo.class, ngoId);
 	}
+
+	@Override
+	public long getCoursesCount(int ngoId) {
+		String jpql= "select count(c) from Course c where c.ngo=:ngoId" ;
+		TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+		query.setParameter("ngoId", ngoId);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public int getEnrollmentsCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getAccomodationsCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getResidentsCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getDayCareCenterCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getEnrolledDayCareCenters(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

@@ -47,6 +47,6 @@ public class CourseController {
 	}
 	@GetMapping("/{courseId}/enroll/{userId}")
 	public Enrollment enroll(@PathVariable int courseId,@PathVariable int userId) {
-		return courseService.enrollForCourse(courseId,1);
+		return courseService.enrollForCourse(courseId,userId);
 	}
 }
