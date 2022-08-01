@@ -20,11 +20,10 @@ public class NgoController {
 	@Autowired
 	NgoServiceImpl ngoService;
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = {"application/json"})
-	public Ngo signup(@RequestBody NgoRegisterDto ngo) {
-		System.out.println("here");
-
-		return ngoService.register(ngo.toNgo());
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public Ngo signup(@RequestBody NgoRegisterDto ngoregisterDto) {
+//		System.out.println(ngoregisterDto);
+		return ngoService.register(ngoregisterDto.toNgo());
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
