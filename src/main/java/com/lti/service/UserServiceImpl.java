@@ -1,12 +1,17 @@
 package com.lti.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.lti.dao.UserDao;
+import com.lti.dto.FamilyDetailsDto;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
+import com.lti.entity.Family;
+import com.lti.entity.User;
 import com.lti.exception.UserIdMissingException;
 import com.lti.exception.UserNotFoundException;
 
@@ -64,6 +69,23 @@ public class UserServiceImpl implements UserService {
 
 	public boolean resetPassword(int userId) {
 		return userDao.resetPassword(userId);
+	}
+
+	public Family addOrUpdateFamily(FamilyDetailsDto family) {
+
+		Family familyMember = family.toFamily();
+		User user = userDao.getUserById(family.getUserId());
+		
+		try {
+			familyMember.setUser(user);
+		} catch (Exception e) {
+			System.out.println("Cant set user");
+		}
+		return userDao.addFamilyOrUpdate(familyMember);
+	}
+	
+	public List<Family> getFamilyDetails(int userId) {
+		return userDao.getFamilyDetails(userId);
 	}
 
 }

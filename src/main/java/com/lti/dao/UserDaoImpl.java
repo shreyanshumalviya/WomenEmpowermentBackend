@@ -1,5 +1,6 @@
 package com.lti.dao;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.persistence.EntityManager;
@@ -9,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lti.dto.FamilyDetailsDto;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
+import com.lti.entity.Family;
 import com.lti.entity.User;
 import com.lti.service.EmailService;
 
@@ -42,7 +45,6 @@ public class UserDaoImpl implements UserDao {
 		newUser.setResidenceArea(user.getResidenceArea());
 		newUser.setMaritalStatus(user.getMaritalStatus());
 		newUser.setDisabled(user.getDisabled());
-//		newUser.setDocument(user.getDocument());
 
 		return newUser;
 	}
@@ -133,7 +135,15 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 
-	@Override
+	@Transactional
+	public Family addFamilyOrUpdate(Family familyMember) {
+		return em.merge(familyMember);
+	}
+
+	public List<Family> getFamilyDetails(int userId) {
+		return em.find(User.class, userId).getFamilyMenbers();
+	}
+	
 	public User getUserById(int userId) {
 		return em.find(User.class, userId);
 	}

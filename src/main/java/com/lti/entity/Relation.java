@@ -1,6 +1,5 @@
 package com.lti.entity;
 
 public enum Relation {
-
-	Father ,Mother,Daughter ,Husband, Son
+	Father, Mother, Daughter, Son, Husband, Wife;
 }

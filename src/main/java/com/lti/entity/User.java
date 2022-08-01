@@ -58,6 +58,10 @@ public class User {
 	@JsonBackReference
 	List<AccomodationStatus> accomodationStatus;
 
+	@OneToMany(mappedBy = "user")
+	@JsonBackReference
+	List<Family> familyMenbers;
+
 	public int getUserId() {
 		return userId;
 	}
@@ -232,6 +236,14 @@ public class User {
 
 	public void setAccomodationStatus(List<AccomodationStatus> accomodationStatus) {
 		this.accomodationStatus = accomodationStatus;
+	}
+
+	public List<Family> getFamilyMenbers() {
+		return familyMenbers;
+	}
+
+	public void setFamilyMenbers(List<Family> familyMenbers) {
+		this.familyMenbers = familyMenbers;
 	}
 
 }
