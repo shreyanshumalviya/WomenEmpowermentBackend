@@ -29,7 +29,7 @@ public class DocumentController {
 	public String upload(FileDTO fileDto, HttpServletRequest request) {
 		String imageUploadLocation = "D://uploads/";
 		UUID uuid = UUID.randomUUID();
-		String fileName = uuid.toString()+fileDto.getFile().getOriginalFilename()+".jpg";// fileDto.getFile().getOriginalFilename();
+		String fileName = uuid.toString()+fileDto.getFile().getOriginalFilename();// fileDto.getFile().getOriginalFilename();
 		
 		String targetFile = imageUploadLocation + fileName;
 		try {

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lti.dto.NgoLogin;
 import com.lti.entity.Ngo;
+import com.lti.entity.NgoDocuments;
 
 @Repository
 public class NgoDaoImpl implements NgoDao {
@@ -74,5 +75,12 @@ public class NgoDaoImpl implements NgoDao {
 	public int getEnrolledDayCareCenters(int ngoId) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	@Transactional
+	public NgoDocuments registerDoc(NgoDocuments ngoDocuments) {
+		
+		return em.merge(ngoDocuments);
 	}
 }
