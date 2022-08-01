@@ -3,13 +3,30 @@ package com.lti.dto;
 import com.lti.entity.Ngo;
 
 public class NgoRegisterDto {
+	int ngoId;
 	String name;
 	String email;
 	String password;
 	String address;
 	String description;
 	String contact;
-	boolean isVerified;
+	Boolean isVerified;
+
+	public Boolean getIsVerified() {
+		return isVerified;
+	}
+
+	public void setIsVerified(Boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+
+	public int getNgoId() {
+		return ngoId;
+	}
+
+	public void setNgoId(int ngoId) {
+		this.ngoId = ngoId;
+	}
 
 	public String getName() {
 		return name;
@@ -61,13 +78,14 @@ public class NgoRegisterDto {
 
 	public Ngo toNgo() {
 		Ngo ngo = new Ngo();
+		ngo.setNgoId(ngoId);
 		ngo.setName(name);
 		ngo.setEmail(email);
 		ngo.setPassword(password);
 		ngo.setAddress(address);
 		ngo.setContact(contact);
 		ngo.setDescription(description);
-		
+		ngo.setVerified(isVerified);
 		return ngo;
 	}
 }

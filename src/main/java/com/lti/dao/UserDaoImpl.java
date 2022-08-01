@@ -42,7 +42,7 @@ public class UserDaoImpl implements UserDao {
 		newUser.setResidenceArea(user.getResidenceArea());
 		newUser.setMaritalStatus(user.getMaritalStatus());
 		newUser.setDisabled(user.getDisabled());
-		newUser.setDocument(user.getDocument());
+//		newUser.setDocument(user.getDocument());
 
 		return newUser;
 	}

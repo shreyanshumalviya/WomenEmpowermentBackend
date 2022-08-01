@@ -18,17 +18,16 @@ public class AccomodationServiceImpl implements AccomodationService {
 
 	@Autowired
 	NgoDao ngoDao;
-	
+
 	@Autowired
 	AccomodationDao accomodationDao;
-	
+
 	@Override
 	public Accomodation createAccomodation(AccomodationRegistrationDto accomodationDto) {
 
-		Accomodation accomodation= accomodationDto.toAccomodation();
-		System.out.println(accomodationDto.getNgo_id()+ " shreyanshu");
+		Accomodation accomodation = accomodationDto.toAccomodation();
+		System.out.println(accomodationDto.getNgo_id() + " shreyanshu");
 		Ngo ngo = ngoDao.getNgoById(accomodationDto.getNgo_id());
-		System.out.println(ngo.getEmail());
 		try {
 			accomodation.setNgo(ngo);
 		} catch (Exception e) {
@@ -47,5 +46,5 @@ public class AccomodationServiceImpl implements AccomodationService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 }

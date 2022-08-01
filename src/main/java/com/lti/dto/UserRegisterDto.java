@@ -29,7 +29,6 @@ public class UserRegisterDto {
 	MaritalStatus maritalStatus;
 	Disability disabled;
 
-	Document document;
 
 	public String getFirstName() {
 		return firstName;
@@ -157,14 +156,6 @@ public class UserRegisterDto {
 
 	public void setDisabled(Disability disabled) {
 		this.disabled = disabled;
-	}
-
-	public Document getDocument() {
-		return document;
-	}
-
-	public void setDocument(Document document) {
-		this.document = document;
 	}
 
 }
