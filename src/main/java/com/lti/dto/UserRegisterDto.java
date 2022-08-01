@@ -156,5 +156,4 @@ public class UserRegisterDto {
 	public void setDisabled(Disability disabled) {
 		this.disabled = disabled;
 	}
-
 }

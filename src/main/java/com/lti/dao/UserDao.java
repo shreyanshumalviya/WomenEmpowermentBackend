@@ -17,8 +17,6 @@ public interface UserDao {
 
 	UserProfileDto searchUserById(int userId);
 
-	public User getUserById(int userId);
-
 	boolean login(int userId, String password);
 
 	boolean changePassword(int userId, String password, String newPassword);
@@ -26,4 +24,6 @@ public interface UserDao {
 	boolean resetPassword(int userId);
 
 	List<Family> getFamilyDetails(int userId);
+
+	User getUserById(int userId);
 }

@@ -85,10 +85,6 @@ public class UserDaoImpl implements UserDao {
 		return new UserProfileDto(em.find(User.class, userId));
 	}
 
-	public User getUserById(int userId) {
-		return em.find(User.class, userId);
-	}
-
 	public boolean login(int userId, String password) {
 		return em.find(User.class, userId).getPassword().equals(password);
 	}
@@ -145,7 +141,11 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public List<Family> getFamilyDetails(int userId) {
-		return em.find(User.class, userId).getFamilyMenbers();		
+		return em.find(User.class, userId).getFamilyMenbers();
+	}
+	
+	public User getUserById(int userId) {
+		return em.find(User.class, userId);
 	}
 
 }

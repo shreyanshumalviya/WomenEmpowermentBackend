@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Accomodation {
 
@@ -36,6 +39,7 @@ public class Accomodation {
 	Ngo ngo;
 
 	@OneToMany(mappedBy = "accomodation")
+	@JsonBackReference
 	List<AccomodationStatus> accomodationStatuses;
 	
 	

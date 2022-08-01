@@ -2,6 +2,7 @@ package com.lti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.NgoLogin;
 import com.lti.dto.NgoRegisterDto;
+import com.lti.dto.NgoStatusDTO;
 import com.lti.entity.Ngo;
 import com.lti.service.NgoServiceImpl;
 
@@ -34,6 +36,11 @@ public class NgoController {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@RequestMapping(value = "/status/{ngoId}", method = RequestMethod.GET)
+	public NgoStatusDTO status(@PathVariable int ngoId) {
+		return ngoService.getNgoStatus(ngoId);
 	}
 
 }

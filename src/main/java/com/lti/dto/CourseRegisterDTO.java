@@ -106,7 +106,7 @@ public class CourseRegisterDTO {
 		course.setDurationMonth(durationMonth);
 		course.setJobOffered(jobOffered);
 		course.setLocation(location);
-		course.setStartDate(startDate);
+		course.setStartDate(startDate.plusDays(1));
 		course.setVacancy(vacancy);
 		
 		return course;
