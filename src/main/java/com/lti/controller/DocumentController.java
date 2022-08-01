@@ -38,7 +38,7 @@ public class DocumentController {
 			e.printStackTrace();
 			return "File not uploaded \n"+e.getMessage();
 		}
-//		documentService.loadFile(fileName, request);
+		documentService.loadFile(fileName, request);
 		return fileName;
 	}
 	
