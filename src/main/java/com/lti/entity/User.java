@@ -43,20 +43,20 @@ public class User {
 	boolean isVerified;
 
 	@OneToOne(mappedBy = "user")
-	@JsonBackReference
 	Document document;
 
 	@OneToMany(mappedBy = "user")
-	@JsonBackReference
 	List<SukanyaAccount> sukanyaAccount;
 
 	@OneToMany(mappedBy = "user")
-	@JsonBackReference
 	List<Enrollment> enroll;
 
 	@OneToMany(mappedBy = "user")
-	@JsonBackReference
 	List<AccomodationStatus> accomodationStatus;
+
+	@OneToMany(mappedBy = "user")
+	@JsonBackReference
+	List<Family> familyMenbers;
 
 	public int getUserId() {
 		return userId;
@@ -232,6 +232,14 @@ public class User {
 
 	public void setAccomodationStatus(List<AccomodationStatus> accomodationStatus) {
 		this.accomodationStatus = accomodationStatus;
+	}
+
+	public List<Family> getFamilyMenbers() {
+		return familyMenbers;
+	}
+
+	public void setFamilyMenbers(List<Family> familyMenbers) {
+		this.familyMenbers = familyMenbers;
 	}
 
 }

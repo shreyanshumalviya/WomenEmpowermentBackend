@@ -1,19 +1,23 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.FamilyDetailsDto;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserIdDto;
 import com.lti.dto.UserLoginDto;
 import com.lti.dto.UserPasswordChangeDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
-import com.lti.entity.User;
+import com.lti.entity.Family;
 import com.lti.service.UserService;
 
 @RestController
@@ -24,7 +28,7 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean signup(@RequestBody UserRegisterDto user) {
 		return userService.signup(user);
 	}
@@ -52,6 +56,16 @@ public class UserController {
 	@RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
 	public boolean resetPassword(@RequestBody UserIdDto userId) {
 		return userService.resetPassword(userId.getUserId());
+	}
+	
+	@RequestMapping(value = "/addFamilyMember", method = RequestMethod.POST)
+	public Family addFamilyMember(@RequestBody FamilyDetailsDto familyMember) {
+		return userService.addOrUpdateFamily(familyMember);
+	}
+	
+	@RequestMapping(value = "/getFamilyDetails", method = RequestMethod.POST)
+	public List<Family> getFamilyDetails(@RequestBody UserIdDto userId) {
+		return userService.getFamilyDetails(userId.getUserId());
 	}
 
 }
