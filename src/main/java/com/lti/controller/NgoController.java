@@ -52,5 +52,5 @@ public class NgoController {
 	public NgoDocuments postNgoDocument(@RequestBody NgoDocRegister docRegister) {
 		return ngoService.postNgoDocument(docRegister);
 	}
-
+	
 }

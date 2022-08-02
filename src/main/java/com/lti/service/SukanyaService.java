@@ -9,4 +9,8 @@ public interface SukanyaService {
 
 	SukanyaDoc postSukanyaDocument(SukanyaDocRegister docRegister);
 
+	boolean verifySukanya(int accountId);
+
+	SukanyaDoc getSukanyaDocument(int accountId);
+
 }

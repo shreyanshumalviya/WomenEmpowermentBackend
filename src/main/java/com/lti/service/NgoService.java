@@ -15,4 +15,6 @@ public interface NgoService {
 	NgoStatusDTO getNgoStatus(int ngoId);
 	
 	NgoDocuments postNgoDocument(NgoDocRegister docRegister);
+
+	NgoDocuments getNgoDocument(int ngoId);
 }
