@@ -31,7 +31,6 @@ public class NgoDaoImpl implements NgoDao {
 		TypedQuery<Ngo> query = em.createQuery(jpql,Ngo.class);
 		query.setParameter("eml", ngoLogin.getEmail());
 		query.setParameter("pwd", ngoLogin.getPassword());
-		
 		return query.getSingleResult();
 	}
 

@@ -38,6 +38,7 @@ public class NgoController {
 		try {
 			return ngoService.login(ngoLogin);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
