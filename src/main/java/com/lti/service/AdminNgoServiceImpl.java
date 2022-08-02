@@ -25,7 +25,7 @@ public class AdminNgoServiceImpl implements AdminNgoService {
 	public NgoRegisterDto updateNgo(NgoRegisterDto dto, Integer ngoId) {
 		Ngo ngo = this.repo.findById(ngoId).orElseThrow(() -> new ResourseNotFoundException("Ngo", "id", ngoId));
 		ngo.setName(dto.getName());
-		ngo.setVerified(dto.getIsVerified());
+		ngo.setVerified(dto.isVerified());
 		Ngo updatedNgo = this.repo.save(ngo);
 		NgoRegisterDto dto1 = this.NgoTodto(updatedNgo);
 		return dto1;

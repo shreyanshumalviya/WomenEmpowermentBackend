@@ -66,4 +66,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.resetPassword(userId);
 	}
 
+	
+	public boolean verifyUser(int userId) {
+		
+		return userDao.verifyUser(userId);
+	}
+
 }

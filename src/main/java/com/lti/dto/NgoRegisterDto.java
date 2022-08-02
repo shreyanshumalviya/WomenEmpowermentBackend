@@ -10,13 +10,15 @@ public class NgoRegisterDto {
 	String address;
 	String description;
 	String contact;
-	Boolean isVerified;
+	boolean isVerified;
 
-	public Boolean getIsVerified() {
+	
+
+	public boolean isVerified() {
 		return isVerified;
 	}
 
-	public void setIsVerified(Boolean isVerified) {
+	public void setVerified(boolean isVerified) {
 		this.isVerified = isVerified;
 	}
 
