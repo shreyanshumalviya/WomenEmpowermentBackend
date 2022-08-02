@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class AccomodationStatus {
 
@@ -18,14 +21,15 @@ public class AccomodationStatus {
 	@GeneratedValue(generator = "accomodationStatusId_seq", strategy = GenerationType.SEQUENCE)
 	int accomodationStatusId;
 
-	@ManyToOne
-	@JoinColumn(name = "accomodationId")
-	Accomodation accomodation;
 
 	LocalDate fromDate;
 	LocalDate toDate;
 	boolean dayCareAvailed;
 
+	@ManyToOne
+	@JoinColumn(name = "accomodationId")
+	Accomodation accomodation;
+	
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	User user;

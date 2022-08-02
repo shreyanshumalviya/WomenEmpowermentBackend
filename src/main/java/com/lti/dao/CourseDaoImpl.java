@@ -1,5 +1,6 @@
 package com.lti.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -39,8 +40,9 @@ public class CourseDaoImpl implements CourseDao {
 	@Override
 	public List<Course> listAllCourses() {
 		// TODO Auto-generated method stub
-		String jpql="select c from Course c";
+		String jpql="select c from Course c where startDate>:today";
 		TypedQuery<Course> query=em.createQuery(jpql, Course.class);
+		query.setParameter("today", LocalDate.now());
 		return query.getResultList();
 	}
 

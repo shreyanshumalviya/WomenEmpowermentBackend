@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.dao.CourseDao;
 import com.lti.dao.NgoDao;
+import com.lti.dao.UserDao;
 import com.lti.dto.CourseRegisterDTO;
 import com.lti.entity.Course;
 import com.lti.entity.Enrollment;
@@ -23,6 +24,9 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	NgoDao ngoDao;
 
+	@Autowired
+	UserDao userDao;
+	
 	@Override
 	public Course createCourse(CourseRegisterDTO courseDTO) {
 		if (courseDTO.getCourseId() != 0) {
@@ -65,7 +69,7 @@ public class CourseServiceImpl implements CourseService {
 		System.out.println(courseId);
 		Course course=courseDao.getCourseById(courseId);
 		System.out.println(course);
-		User user=courseDao.getNgoById(userId);
+		User user=userDao.getUserById(userId);
 		enrollment.setUser(user);
 		enrollment.setCourse(course);
 		enrollment.setRegistrationDate(LocalDate.now());

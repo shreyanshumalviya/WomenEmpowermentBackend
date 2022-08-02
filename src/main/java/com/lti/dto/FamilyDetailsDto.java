@@ -1,22 +1,12 @@
-package com.lti.entity;
+package com.lti.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+import com.lti.entity.Family;
+import com.lti.entity.Gender;
+import com.lti.entity.Relation;
 
-@Entity
-public class Family {
-
-	@Id
-	@SequenceGenerator(name = "family_seq", initialValue = 1000, allocationSize = 1)
-	@GeneratedValue(generator = "family_seq", strategy = GenerationType.SEQUENCE)
+public class FamilyDetailsDto {
 	int familyId;
 
 	String firstName;
@@ -27,12 +17,7 @@ public class Family {
 	Relation relation;
 	String aadhaarNo;
 
-	@ManyToOne
-	@JoinColumn(name = "userId")
-	User user;
-
-	@OneToOne(mappedBy = "family")
-	FamilyDocument familydoc;
+	int userId;
 
 	public int getFamilyId() {
 		return familyId;
@@ -98,19 +83,26 @@ public class Family {
 		this.aadhaarNo = aadhaarNo;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public FamilyDocument getFamilydoc() {
-		return familydoc;
-	}
+	public Family toFamily() {
+		Family family = new Family();
 
-	public void setFamilydoc(FamilyDocument familydoc) {
-		this.familydoc = familydoc;
+		family.setFamilyId(familyId);
+		family.setFirstName(firstName);
+		family.setMiddleName(middleName);
+		family.setLastName(lastName);
+		family.setGender(gender);
+		family.setDob(dob);
+		family.setRelation(relation);
+		family.setAadhaarNo(aadhaarNo);
+
+		return family;
 	}
 }

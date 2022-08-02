@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Document {
 	@Id
@@ -15,13 +17,14 @@ public class Document {
 	@GeneratedValue(generator = "doc_seq", strategy = GenerationType.SEQUENCE)
 	int documentId;
 
-	String adharNo;
-	String adharLink;
+	String aadhaarNo;
+	String aadhaarLink;
 	String panNo;
 	String panLink;
 
 	@OneToOne
 	@JoinColumn(name = "userId")
+	@JsonManagedReference
 	User user;
 
 	public int getDocumentId() {
@@ -32,20 +35,20 @@ public class Document {
 		this.documentId = documentId;
 	}
 
-	public String getAdharNo() {
-		return adharNo;
+	public String getAadhaarNo() {
+		return aadhaarNo;
 	}
 
-	public void setAdharNo(String adharNo) {
-		this.adharNo = adharNo;
+	public void setAadhaarNo(String adharNo) {
+		this.aadhaarNo = adharNo;
 	}
 
-	public String getAdharLink() {
-		return adharLink;
+	public String getAadhaarLink() {
+		return aadhaarLink;
 	}
 
-	public void setAdharLink(String adharLink) {
-		this.adharLink = adharLink;
+	public void setAadhaarLink(String adharLink) {
+		this.aadhaarLink = adharLink;
 	}
 
 	public String getPanNo() {

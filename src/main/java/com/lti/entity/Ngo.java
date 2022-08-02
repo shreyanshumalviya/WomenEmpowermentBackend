@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "tbl_ngo")
@@ -41,7 +43,7 @@ public class Ngo {
 
 	@OneToMany(mappedBy = "ngo")
 	@JsonBackReference
-	List<Accomodation> accomodations;
+	List<Accomodation> accomodation;
 
 	public int getNgoId() {
 		return ngoId;
@@ -116,12 +118,12 @@ public class Ngo {
 		this.ngoDoc = ngoDoc;
 	}
 
-	public List<Accomodation> getAccomodations() {
-		return accomodations;
+	public List<Accomodation> getAccomodation() {
+		return accomodation;
 	}
 
-	public void setAccomodations(List<Accomodation> accomodations) {
-		this.accomodations = accomodations;
+	public void setAccomodation(List<Accomodation> accomodations) {
+		this.accomodation = accomodations;
 	}
 
 	public boolean isVerified() {

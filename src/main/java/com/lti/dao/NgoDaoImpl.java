@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.lti.dto.NgoLogin;
 import com.lti.entity.Ngo;
 import com.lti.entity.User;
+import com.lti.entity.NgoDocuments;
 
 @Repository
 public class NgoDaoImpl implements NgoDao {
@@ -31,7 +32,6 @@ public class NgoDaoImpl implements NgoDao {
 		TypedQuery<Ngo> query = em.createQuery(jpql,Ngo.class);
 		query.setParameter("eml", ngoLogin.getEmail());
 		query.setParameter("pwd", ngoLogin.getPassword());
-		
 		return query.getSingleResult();
 	}
 
@@ -50,6 +50,50 @@ public class NgoDaoImpl implements NgoDao {
 			return false;
 		}
 		return true;
+	}
 
+	@Override
+	public long getCoursesCount(int ngoId) {
+		String jpql= "select count(c) from Course c where c.ngo=:ngoId" ;
+		TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+		query.setParameter("ngoId", ngoId);
+		return query.getSingleResult();
+	}
+
+	@Override
+	public int getEnrollmentsCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getAccomodationsCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getResidentsCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getDayCareCenterCount(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getEnrolledDayCareCenters(int ngoId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	@Transactional
+	public NgoDocuments registerDoc(NgoDocuments ngoDocuments) {
+		
+		return em.merge(ngoDocuments);
 	}
 }

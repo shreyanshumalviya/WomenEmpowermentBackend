@@ -1,5 +1,6 @@
 package com.lti.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,14 @@ import org.springframework.stereotype.Service;
 
 import com.lti.dao.AccomodationDao;
 import com.lti.dao.NgoDao;
+import com.lti.dao.UserDao;
 import com.lti.dto.AccomodationRegistrationDto;
 import com.lti.entity.Accomodation;
 import com.lti.entity.AccomodationStatus;
 import com.lti.entity.Course;
+import com.lti.entity.Enrollment;
 import com.lti.entity.Ngo;
+import com.lti.entity.User;
 
 @Service
 public class AccomodationServiceImpl implements AccomodationService {
@@ -22,6 +26,9 @@ public class AccomodationServiceImpl implements AccomodationService {
 	@Autowired
 	AccomodationDao accomodationDao;
 
+	@Autowired
+	UserDao userDao;
+	
 	@Override
 	public Accomodation createAccomodation(AccomodationRegistrationDto accomodationDto) {
 
@@ -38,13 +45,46 @@ public class AccomodationServiceImpl implements AccomodationService {
 
 	@Override
 	public List<Accomodation> listAccomodationsByNgoId(int ngoId) {
-		return accomodationDao.listAccomodationsByNgoId(ngoId);
+		List<Accomodation> accomodations=accomodationDao.listAccomodationsByNgoId(ngoId);
+		for(Accomodation accomodation: accomodations) {
+			accomodation.setAccomodation(null);
+		}
+		return accomodations;
 	}
 
 	@Override
 	public List<AccomodationStatus> listResidentsByAccomodationId(int accomodationId) {
+		List<AccomodationStatus> accomodationStatii = accomodationDao.listResidentsByAccomodationId(accomodationId);
+		for(AccomodationStatus status: accomodationStatii) {
+			status.setAccomodation(null);
+		}
+		return accomodationDao.listResidentsByAccomodationId(accomodationId);
+	}
+
+	@Override
+	public List<Accomodation> listAllAccomodations() {
+		List<Accomodation> accomodations =accomodationDao.listAllAccomodations();
+		for(Accomodation accomodation: accomodations) {
+			accomodation.setAccomodation(null);
+			accomodation.setNgo(null);
+		}
+		return accomodations;
+	}
+
+	@Override
+	public AccomodationStatus registerForAccomodation(int accomodationId, int userId) {
 		// TODO Auto-generated method stub
-		return null;
+		AccomodationStatus accomodationStatus=new AccomodationStatus();
+		Accomodation accomodation=accomodationDao.getAccomodationById(accomodationId);
+		User user=userDao.getUserById(userId);
+		accomodationStatus.setUser(user);
+		accomodationStatus.setAccomodation(accomodation);
+		accomodationStatus.setFromDate(LocalDate.now());
+		
+		accomodation.setRoomAvailable(accomodation.getRoomAvailable()-1);
+		AccomodationStatus accomStatus = accomodationDao.registerForAccomodation(accomodationStatus, accomodation);
+		accomStatus.setAccomodation(null);
+		return accomStatus;
 	}
 
 }

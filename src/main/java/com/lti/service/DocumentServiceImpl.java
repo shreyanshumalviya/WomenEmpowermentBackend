@@ -1,4 +1,5 @@
 package com.lti.service;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -6,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Service
 public class DocumentServiceImpl implements DocumentService {

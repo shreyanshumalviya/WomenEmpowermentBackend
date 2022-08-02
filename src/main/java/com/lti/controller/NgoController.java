@@ -1,24 +1,19 @@
 package com.lti.controller;
 
-import java.util.HashMap;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lti.dto.NgoDocRegister;
 import com.lti.dto.NgoLogin;
 import com.lti.dto.NgoRegisterDto;
+import com.lti.dto.NgoStatusDTO;
 import com.lti.entity.Ngo;
+import com.lti.entity.NgoDocuments;
 import com.lti.entity.User;
 import com.lti.service.NgoService;
 import com.lti.service.NgoServiceImpl;
@@ -43,8 +38,19 @@ public class NgoController {
 		try {
 			return ngoService.login(ngoLogin);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@RequestMapping(value = "/status/{ngoId}", method = RequestMethod.GET)
+	public NgoStatusDTO status(@PathVariable int ngoId) {
+		return ngoService.getNgoStatus(ngoId);
+	}
+
+	@RequestMapping(value = "/upload_doc", method = RequestMethod.POST)
+	public NgoDocuments postNgoDocument(@RequestBody NgoDocRegister docRegister) {
+		return ngoService.postNgoDocument(docRegister);
 	}
 
 }

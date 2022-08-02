@@ -1,5 +1,6 @@
 package com.lti.dao;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.persistence.EntityManager;
@@ -12,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
+import com.lti.entity.Document;
+import com.lti.entity.Family;
 import com.lti.entity.User;
 import com.lti.service.EmailService;
 
@@ -71,12 +74,36 @@ public class UserDaoImpl implements UserDao {
 
 	@Transactional
 	public UserProfileDto addUser(UserRegisterDto user) {
-		return new UserProfileDto(em.merge(registerDtoToUserMapper(user)));
+		User user2 = em.merge(registerDtoToUserMapper(user));
+
+		Document user2Doc = new Document();
+		user2Doc.setUser(user2);
+		user2Doc.setAadhaarNo(user.getAadhaarNo());
+		user2Doc.setPanNo(user.getPanNo());
+		user2Doc.setAadhaarLink(user.getAadhaarLink());
+		user2Doc.setPanLink(user.getPanLink());
+		user2Doc = em.merge(user2Doc);
+
+		return new UserProfileDto(user2);
 	}
 
 	@Transactional
 	public UserProfileDto updateUser(UpdateUserDto user) {
 		return new UserProfileDto(em.merge(updateDtoToUserMapper(user)));
+	}
+	
+	@Transactional
+	public Document updateAadhaar(int documentId, String link) {
+		Document document = em.find(Document.class, documentId);
+		document.setAadhaarLink(link);
+		return em.merge(document);
+	}
+	
+	@Transactional
+	public Document updatePan(int documentId, String link) {
+		Document document = em.find(Document.class, documentId);
+		document.setPanLink(link);
+		return em.merge(document);
 	}
 
 	public UserProfileDto searchUserById(int userId) {
@@ -144,7 +171,17 @@ public class UserDaoImpl implements UserDao {
 			return false;
 		}
 		return true;
+	}
+	public Family addFamilyOrUpdate(Family familyMember) {
+		return em.merge(familyMember);
+	}
 
+	public List<Family> getFamilyDetails(int userId) {
+		return em.find(User.class, userId).getFamilyMenbers();
+	}
+
+	public User getUserById(int userId) {
+		return em.find(User.class, userId);
 	}
 
 }

@@ -173,7 +173,7 @@ public class AccomodationRegistrationDto {
 		accomodation.setDayCareCentre(dayCareCentre);
 		accomodation.setTotalRoom(totalRoom);
 		accomodation.setPincode(pincode);
-		accomodation.setRoomAvailable(roomAvailable);
+		accomodation.setRoomAvailable(totalRoom);
 		
 		return accomodation;
 	}
