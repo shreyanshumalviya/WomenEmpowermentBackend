@@ -21,25 +21,32 @@ import com.lti.entity.Course;
 import com.lti.entity.Ngo;
 import com.lti.service.AdminNgoServiceImpl;
 import com.lti.service.AdminRepo;
+import com.lti.service.NgoService;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/adminngo")
 public class AdminNgoController {
-	
+
 	@Autowired
 	private AdminNgoServiceImpl adminNgoService;
 	
-	
+	@Autowired
+	NgoService ngoService;
+
 	@GetMapping("/viewall")
 	List<Ngo> getNgo() {
 		return adminNgoService.getData();
 	}
 
-	@PutMapping("/update/{ngoId}")
-	public ResponseEntity<NgoRegisterDto> updateNgo(@RequestBody NgoRegisterDto Dto, @PathVariable Integer ngoId ) {
-		NgoRegisterDto updatedNgo=this.adminNgoService.updateNgo(Dto, ngoId);
-		return ResponseEntity.ok(updatedNgo);
+//	@PutMapping("/update/{ngoId}")
+//	public ResponseEntity<NgoRegisterDto> updateNgo(@RequestBody NgoRegisterDto Dto, @PathVariable Integer ngoId ) {
+//		NgoRegisterDto updatedNgo=this.adminNgoService.updateNgo(Dto, ngoId);
+//		return ResponseEntity.ok(updatedNgo);
+//	}
+	
+	@PutMapping("/verify/{ngoId}")
+	public boolean verifyNgo(@PathVariable int ngoId) {
+		return ngoService.verifyNgo(ngoId);
 	}
-
 }

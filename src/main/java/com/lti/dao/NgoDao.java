@@ -9,4 +9,6 @@ public interface NgoDao {
 	Ngo login(NgoLogin ngoLogin);
 	
 	Ngo getNgoById(int ngoId);
+
+	boolean verifyNgo(int ngoId);
 }

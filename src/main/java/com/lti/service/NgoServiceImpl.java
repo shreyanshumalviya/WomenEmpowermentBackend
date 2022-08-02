@@ -12,16 +12,19 @@ public class NgoServiceImpl implements NgoService {
 
 	@Autowired
 	NgoDao dao;
-	
+
 	@Override
 	public Ngo register(Ngo ngo) {
-		System.out.println("Shreyanshu "+dao);
+		System.out.println("Shreyanshu " + dao);
 		return dao.register(ngo);
 	}
-	
+
 	@Override
 	public Ngo login(NgoLogin ngoLogin) {
 		return dao.login(ngoLogin);
 	}
 
+	public boolean verifyNgo(int ngoId) {
+		return dao.verifyNgo(ngoId);
+	}
 }
