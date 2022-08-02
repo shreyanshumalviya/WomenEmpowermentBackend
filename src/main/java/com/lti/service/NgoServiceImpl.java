@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lti.dao.NgoDao;
+import com.lti.dto.NgoDocRegister;
 import com.lti.dto.NgoLogin;
 import com.lti.dto.NgoStatusDTO;
 import com.lti.entity.Accomodation;
 import com.lti.entity.Course;
 import com.lti.entity.Ngo;
+import com.lti.entity.NgoDocuments;
 
 @Service
 public class NgoServiceImpl implements NgoService {
@@ -57,6 +59,17 @@ public class NgoServiceImpl implements NgoService {
 			}
 		}
 		return ngoStatus;
+	}
+
+	public NgoDocuments postNgoDocument(NgoDocRegister docRegister) {
+		// TODO Auto-generated method stub
+		NgoDocuments ngoDocuments = new NgoDocuments();
+		ngoDocuments.setCertificateLink(docRegister.getCertificateLink());
+		ngoDocuments.setCertificateNo(docRegister.getCertificateNo());
+		ngoDocuments.setNgo(dao.getNgoById(docRegister.getNgoId()));
+		NgoDocuments savedNgoDoc =dao.registerDoc(ngoDocuments) ;
+		savedNgoDoc.getNgo().setAccomodation(null);
+		return savedNgoDoc;
 	}
 
 }
