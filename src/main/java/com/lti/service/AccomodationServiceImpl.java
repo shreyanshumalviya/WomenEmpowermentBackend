@@ -64,7 +64,12 @@ public class AccomodationServiceImpl implements AccomodationService {
 
 	@Override
 	public List<Accomodation> listAllAccomodations() {
-		return accomodationDao.listAllAccomodations();
+		List<Accomodation> accomodations =accomodationDao.listAllAccomodations();
+		for(Accomodation accomodation: accomodations) {
+			accomodation.setAccomodation(null);
+			accomodation.setNgo(null);
+		}
+		return accomodations;
 	}
 
 	@Override
