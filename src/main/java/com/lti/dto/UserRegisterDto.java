@@ -29,6 +29,9 @@ public class UserRegisterDto {
 	MaritalStatus maritalStatus;
 	Disability disabled;
 
+	String aadhaarLink;
+	String panLink;
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -156,4 +159,21 @@ public class UserRegisterDto {
 	public void setDisabled(Disability disabled) {
 		this.disabled = disabled;
 	}
+
+	public String getAadhaarLink() {
+		return aadhaarLink;
+	}
+
+	public void setAadhaarLink(String aadhaarLink) {
+		this.aadhaarLink = aadhaarLink;
+	}
+
+	public String getPanLink() {
+		return panLink;
+	}
+
+	public void setPanLink(String panLink) {
+		this.panLink = panLink;
+	}
+
 }
