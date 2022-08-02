@@ -12,6 +12,8 @@ public class SukanyaRegistrationDto {
 	String lastName;
 	LocalDate dateOfBirth;
 	String aadharNumber;
+	int userId;
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -35,6 +37,13 @@ public class SukanyaRegistrationDto {
 	}
 	public void setAadharNumber(String aadharNumber) {
 		this.aadharNumber = aadharNumber;
+	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public SukanyaAccount toSukanyaAccount() {
 		SukanyaAccount sukanyaAccount =new SukanyaAccount();
