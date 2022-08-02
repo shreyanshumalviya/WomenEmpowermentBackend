@@ -52,7 +52,13 @@ public class UserController {
 	
 	@RequestMapping(value = "/userDetails", method = RequestMethod.POST)
 	public UserProfileDto getProfileDetails(@RequestBody UserIdDto userId) {
-		return userService.getProfileDetails(userId.getUserId());
+		UserProfileDto userProfileDto = userService.getProfileDetails(userId.getUserId());
+		userProfileDto.setAccomodationStatus(null);
+		userProfileDto.setSukanyaAccount(null);
+		userProfileDto.setEnroll(null);
+		userProfileDto.getDocument().setUser(null);
+//		userProfileDto.set(null);
+		return userProfileDto;
 	}
 	
 	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
