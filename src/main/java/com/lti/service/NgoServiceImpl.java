@@ -12,6 +12,7 @@ import com.lti.dao.NgoDao;
 import com.lti.dto.NgoDocRegister;
 import com.lti.dto.NgoLogin;
 import com.lti.dto.NgoStatusDTO;
+import com.lti.dto.UserProfileDto;
 import com.lti.entity.Accomodation;
 import com.lti.entity.Course;
 import com.lti.entity.Ngo;
@@ -37,27 +38,29 @@ public class NgoServiceImpl implements NgoService {
 	public boolean verifyNgo(int ngoId) {
 		return dao.verifyNgo(ngoId);
 	}
+
 	public NgoStatusDTO getNgoStatus(int ngoId) {
-		Ngo ngo =  dao.getNgoById(ngoId);
+		Ngo ngo = dao.getNgoById(ngoId);
 		List<Course> courses = ngo.getCourse();
 		NgoStatusDTO ngoStatus = new NgoStatusDTO();
-		ngoStatus.courses= courses.size();
+		ngoStatus.courses = courses.size();
 		for (Course course : courses) {
 			ngoStatus.learners += course.getEnrollments().size();
-			if(course.getStartDate().isAfter(LocalDate.now())&&(ngoStatus.nextCourseStarts==null || course.getStartDate().isBefore(ngoStatus.nextCourseStarts))) {
+			if (course.getStartDate().isAfter(LocalDate.now()) && (ngoStatus.nextCourseStarts == null
+					|| course.getStartDate().isBefore(ngoStatus.nextCourseStarts))) {
 				ngoStatus.nextCourseStarts = course.getStartDate();
 			}
-			if(course.getStartDate().isBefore(LocalDate.now().minusMonths(course.getDurationMonth()))){
+			if (course.getStartDate().isBefore(LocalDate.now().minusMonths(course.getDurationMonth()))) {
 				ngoStatus.courseFinished++;
 			}
 		}
-		
+
 		List<Accomodation> accomodations = ngo.getAccomodation();
 		ngoStatus.accomodations = accomodations.size();
-		
-		for(Accomodation accomodation: accomodations) {
-			ngoStatus.residents+= accomodation.getAccomodation().size();
-			if(accomodation.isDayCareCentre()) {
+
+		for (Accomodation accomodation : accomodations) {
+			ngoStatus.residents += accomodation.getAccomodation().size();
+			if (accomodation.isDayCareCentre()) {
 				ngoStatus.dayCareCenters++;
 			}
 		}
@@ -70,9 +73,15 @@ public class NgoServiceImpl implements NgoService {
 		ngoDocuments.setCertificateLink(docRegister.getCertificateLink());
 		ngoDocuments.setCertificateNo(docRegister.getCertificateNo());
 		ngoDocuments.setNgo(dao.getNgoById(docRegister.getNgoId()));
-		NgoDocuments savedNgoDoc =dao.registerDoc(ngoDocuments) ;
+		NgoDocuments savedNgoDoc = dao.registerDoc(ngoDocuments);
 		savedNgoDoc.getNgo().setAccomodation(null);
 		return savedNgoDoc;
 	}
+
+	public NgoDocuments getNgoDocument(int ngoId) {
+		dao.getNgoById(ngoId);
+		return dao.getNgoById(ngoId).getNgoDoc();
+	}
+
 
 }
