@@ -34,6 +34,9 @@ public class NgoServiceImpl implements NgoService {
 		return dao.login(ngoLogin);
 	}
 
+	public boolean verifyNgo(int ngoId) {
+		return dao.verifyNgo(ngoId);
+	}
 	public NgoStatusDTO getNgoStatus(int ngoId) {
 		Ngo ngo =  dao.getNgoById(ngoId);
 		List<Course> courses = ngo.getCourse();

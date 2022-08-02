@@ -11,6 +11,7 @@ public interface NgoDao {
 	
 	Ngo getNgoById(int ngoId);
 
+	boolean verifyNgo(int ngoId);
 	long getCoursesCount(int ngoId);
 	int getEnrollmentsCount(int ngoId);
 	int getAccomodationsCount(int ngoId);

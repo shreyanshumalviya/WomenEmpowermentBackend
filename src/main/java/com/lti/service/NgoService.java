@@ -11,6 +11,7 @@ public interface NgoService {
 
 	Ngo login(NgoLogin ngoLogin);
 
+	boolean verifyNgo(int ngoId);
 	NgoStatusDTO getNgoStatus(int ngoId);
 	
 	NgoDocuments postNgoDocument(NgoDocRegister docRegister);

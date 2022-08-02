@@ -45,6 +45,7 @@ public class UserDaoImpl implements UserDao {
 		newUser.setResidenceArea(user.getResidenceArea());
 		newUser.setMaritalStatus(user.getMaritalStatus());
 		newUser.setDisabled(user.getDisabled());
+//		newUser.setDocument(user.getDocument());
 
 		return newUser;
 	}
@@ -160,6 +161,17 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Transactional
+	public boolean verifyUser(int userId) {
+		User user = em.find(User.class, userId);
+		user.setVerified(!user.isVerified());
+		try {
+			user = em.merge(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 	public Family addFamilyOrUpdate(Family familyMember) {
 		return em.merge(familyMember);
 	}
