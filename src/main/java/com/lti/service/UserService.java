@@ -6,6 +6,7 @@ import com.lti.dto.FamilyDetailsDto;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
+import com.lti.entity.Document;
 import com.lti.entity.Family;
 
 public interface UserService {
@@ -24,4 +25,8 @@ public interface UserService {
 	List<Family> getFamilyDetails(int userId);
 
 	Family addOrUpdateFamily(FamilyDetailsDto family);
+	
+	Document updateAadhaar(int documentId, String link);
+	
+	Document updatePan(int documentId, String link);
 }

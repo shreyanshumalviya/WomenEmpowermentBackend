@@ -43,6 +43,7 @@ public class User {
 	boolean isVerified;
 
 	@OneToOne(mappedBy = "user")
+	@JsonBackReference
 	Document document;
 
 	@OneToMany(mappedBy = "user")

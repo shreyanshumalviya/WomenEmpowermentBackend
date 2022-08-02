@@ -5,6 +5,7 @@ import java.util.List;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
+import com.lti.entity.Document;
 import com.lti.entity.Family;
 import com.lti.entity.User;
 
@@ -26,4 +27,8 @@ public interface UserDao {
 	List<Family> getFamilyDetails(int userId);
 
 	User getUserById(int userId);
+	
+	Document updateAadhaar(int documentId, String link);
+	
+	Document updatePan(int documentId, String link);
 }

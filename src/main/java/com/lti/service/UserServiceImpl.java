@@ -10,6 +10,7 @@ import com.lti.dto.FamilyDetailsDto;
 import com.lti.dto.UpdateUserDto;
 import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
+import com.lti.entity.Document;
 import com.lti.entity.Family;
 import com.lti.entity.User;
 import com.lti.exception.UserIdMissingException;
@@ -28,8 +29,11 @@ public class UserServiceImpl implements UserService {
 		try {
 			UserProfileDto user2 = userDao.addUser(user);
 			try {
-				emailService.sendEmailForSignup(user.getEmail(),
-						"Sign up to Portal successfull\nYour User Id is: " + user2.getUserId() + "\nUse with your registered password to login", "Welcome - Signup Successfull");
+				emailService
+						.sendEmailForSignup(user.getEmail(),
+								"Sign up to Portal successfull\nYour User Id is: " + user2.getUserId()
+										+ "\nUse with your registered password to login",
+								"Welcome - Signup Successfull");
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -75,7 +79,7 @@ public class UserServiceImpl implements UserService {
 
 		Family familyMember = family.toFamily();
 		User user = userDao.getUserById(family.getUserId());
-		
+
 		try {
 			familyMember.setUser(user);
 		} catch (Exception e) {
@@ -83,9 +87,17 @@ public class UserServiceImpl implements UserService {
 		}
 		return userDao.addFamilyOrUpdate(familyMember);
 	}
-	
+
 	public List<Family> getFamilyDetails(int userId) {
 		return userDao.getFamilyDetails(userId);
+	}
+
+	public Document updateAadhaar(int documentId, String link) {
+		return userDao.updateAadhaar(documentId, link);
+	}
+
+	public Document updatePan(int documentId, String link) {
+		return userDao.updatePan(documentId, link);
 	}
 
 }
