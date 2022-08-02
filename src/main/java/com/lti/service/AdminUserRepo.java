@@ -9,6 +9,4 @@ import com.lti.entity.User;
 
 @Repository
 public interface AdminUserRepo extends JpaRepository<User, Integer> {
-	@Override 
-	List<User> findAll();
 }

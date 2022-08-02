@@ -133,4 +133,18 @@ public class UserDaoImpl implements UserDao {
 		return false;
 	}
 
+	@Transactional
+	public boolean verifyUser(int userId) {
+		User user = em.find(User.class, userId);
+		user.setVerified(!user.isVerified());
+		try {
+			user = em.merge(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+
+	}
+
 }

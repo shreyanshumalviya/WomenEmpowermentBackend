@@ -7,4 +7,6 @@ public interface NgoService {
 	Ngo register(Ngo ngo);
 
 	Ngo login(NgoLogin ngoLogin);
+
+	boolean verifyNgo(int ngoId);
 }

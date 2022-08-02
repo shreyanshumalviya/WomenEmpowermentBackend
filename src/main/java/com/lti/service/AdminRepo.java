@@ -14,6 +14,4 @@ import com.lti.entity.SukanyaAccount;
 @Repository
 public interface AdminRepo extends JpaRepository<Ngo, Integer> {
 
-	
-
 }

@@ -15,9 +15,9 @@ import com.lti.dto.UserProfileDto;
 import com.lti.dto.UserRegisterDto;
 import com.lti.entity.User;
 import com.lti.service.UserService;
-
+	
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/users")
 public class UserController {
 	
@@ -59,5 +59,5 @@ public class UserController {
 	public boolean resetPassword(@RequestBody UserIdDto userId) {
 		return userService.resetPassword(userId.getUserId());
 	}
-
+	
 }
