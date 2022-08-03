@@ -12,7 +12,7 @@ public interface CourseDao {
 	List<Course> listCoursesByNgo(int ngoId);
 	List<Enrollment> listUserEnrolledForCourse(int courseId);
 	List<Course> listAllCourses();
-	Enrollment enrollForCourse(Enrollment enrollment);
+	Enrollment enrollForCourse(Course course, Enrollment enrollment);
 	public Course getCourseById(int courseId);
 	public User getNgoById(int ngoId);
 	

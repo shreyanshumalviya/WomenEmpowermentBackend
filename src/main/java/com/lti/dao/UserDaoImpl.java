@@ -172,6 +172,8 @@ public class UserDaoImpl implements UserDao {
 		}
 		return true;
 	}
+	
+	@Transactional
 	public Family addFamilyOrUpdate(Family familyMember) {
 		return em.merge(familyMember);
 	}

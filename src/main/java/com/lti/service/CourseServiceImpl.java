@@ -74,7 +74,9 @@ public class CourseServiceImpl implements CourseService {
 		enrollment.setCourse(course);
 		enrollment.setRegistrationDate(LocalDate.now());
 		
-		return courseDao.enrollForCourse(enrollment);
+		course.setVacancy(course.getVacancy()-1);
+		
+		return courseDao.enrollForCourse(course, enrollment);
 	}
 
 }

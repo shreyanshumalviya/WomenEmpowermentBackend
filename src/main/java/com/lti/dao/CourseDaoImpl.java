@@ -48,7 +48,8 @@ public class CourseDaoImpl implements CourseDao {
 
 	@Override
 	@Transactional
-	public Enrollment enrollForCourse(Enrollment enrollment) {
+	public Enrollment enrollForCourse(Course course, Enrollment enrollment) {
+		em.merge(course);
 		// TODO Auto-generated method stub
 		return em.merge(enrollment);
 	}
