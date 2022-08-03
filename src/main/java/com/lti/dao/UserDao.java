@@ -23,6 +23,7 @@ public interface UserDao {
 	boolean changePassword(int userId, String password, String newPassword);
 
 	boolean resetPassword(int userId);
+	boolean verifyUser(int userId);
 
 	List<Family> getFamilyDetails(int userId);
 

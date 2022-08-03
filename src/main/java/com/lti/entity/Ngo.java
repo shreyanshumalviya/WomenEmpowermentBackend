@@ -102,14 +102,6 @@ public class Ngo {
 		this.contact = contact;
 	}
 
-	public boolean isVerified() {
-		return isVerified;
-	}
-
-	public void setVerified(boolean isVerified) {
-		this.isVerified = isVerified;
-	}
-
 	public List<Course> getCourse() {
 		return course;
 	}
@@ -132,6 +124,14 @@ public class Ngo {
 
 	public void setAccomodation(List<Accomodation> accomodations) {
 		this.accomodation = accomodations;
+	}
+
+	public boolean isVerified() {
+		return isVerified;
+	}
+
+	public void setVerified(boolean isVerified) {
+		this.isVerified = isVerified;
 	}
 
 }

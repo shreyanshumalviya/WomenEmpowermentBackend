@@ -77,6 +77,11 @@ public class UserServiceImpl implements UserService {
 		return userDao.resetPassword(userId);
 	}
 
+	
+	public boolean verifyUser(int userId) {
+		
+		return userDao.verifyUser(userId);
+	}
 	public Family addOrUpdateFamily(FamilyDetailsDto family) {
 		family.getDob().plusDays(1);
 		Family familyMember = family.toFamily();

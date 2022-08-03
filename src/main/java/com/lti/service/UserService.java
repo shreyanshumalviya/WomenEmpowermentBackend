@@ -22,6 +22,7 @@ public interface UserService {
 
 	boolean resetPassword(int userId);
 
+	boolean verifyUser(int userId);
 	List<Family> getFamilyDetails(int userId);
 
 	Family addOrUpdateFamily(FamilyDetailsDto family);

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.lti.dto.NgoLogin;
 import com.lti.entity.Ngo;
+import com.lti.entity.User;
+import com.lti.entity.NgoDocuments;
 
 @Repository
 public class NgoDaoImpl implements NgoDao {
@@ -30,12 +32,24 @@ public class NgoDaoImpl implements NgoDao {
 		TypedQuery<Ngo> query = em.createQuery(jpql,Ngo.class);
 		query.setParameter("eml", ngoLogin.getEmail());
 		query.setParameter("pwd", ngoLogin.getPassword());
-		
 		return query.getSingleResult();
 	}
 
 	public Ngo getNgoById(int ngoId) {
 		return em.find(Ngo.class, ngoId);
+	}
+	
+	@Transactional
+	public boolean verifyNgo(int ngoId) {
+		Ngo ngo = em.find(Ngo.class, ngoId);
+		ngo.setVerified(!ngo.isVerified());
+		try {
+			ngo = em.merge(ngo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	@Override
@@ -74,5 +88,12 @@ public class NgoDaoImpl implements NgoDao {
 	public int getEnrolledDayCareCenters(int ngoId) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	@Transactional
+	public NgoDocuments registerDoc(NgoDocuments ngoDocuments) {
+		
+		return em.merge(ngoDocuments);
 	}
 }

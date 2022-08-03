@@ -2,6 +2,7 @@ package com.lti.dao;
 
 import com.lti.dto.NgoLogin;
 import com.lti.entity.Ngo;
+import com.lti.entity.NgoDocuments;
 
 public interface NgoDao {
 	Ngo register(Ngo ngo);
@@ -10,10 +11,13 @@ public interface NgoDao {
 	
 	Ngo getNgoById(int ngoId);
 
+	boolean verifyNgo(int ngoId);
 	long getCoursesCount(int ngoId);
 	int getEnrollmentsCount(int ngoId);
 	int getAccomodationsCount(int ngoId);
 	int getResidentsCount(int ngoId);
 	int getDayCareCenterCount(int ngoId);
 	int getEnrolledDayCareCenters(int ngoId);
+
+	NgoDocuments registerDoc(NgoDocuments ngoDocuments);
 }

@@ -47,12 +47,15 @@ public class User {
 	Document document;
 
 	@OneToMany(mappedBy = "user")
+	@JsonBackReference
 	List<SukanyaAccount> sukanyaAccount;
 
 	@OneToMany(mappedBy = "user")
+	@JsonBackReference
 	List<Enrollment> enroll;
 
 	@OneToMany(mappedBy = "user")
+	@JsonBackReference
 	List<AccomodationStatus> accomodationStatus;
 
 	@OneToMany(mappedBy = "user")
