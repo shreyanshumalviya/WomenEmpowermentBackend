@@ -64,6 +64,7 @@ public class UserProfileDto {
 		this.sukanyaAccount = user.getSukanyaAccount();
 		this.enroll = user.getEnroll();
 		this.accomodationStatus = user.getAccomodationStatus();
+		this.disabled = user.getDisabled();
 	}
 
 	public int getUserId() {

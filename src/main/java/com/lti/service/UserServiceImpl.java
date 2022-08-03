@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
 
 	public boolean signup(UserRegisterDto user) {
 		try {
+			user.getDob().plusDays(1);
 			UserProfileDto user2 = userDao.addUser(user);
 			try {
 				emailService
@@ -46,6 +47,7 @@ public class UserServiceImpl implements UserService {
 
 	public UserProfileDto updateProfile(UpdateUserDto user) {
 		try {
+			user.getDob().plusDays(1);
 			if (user.getUserId() == 0) {
 				throw new UserIdMissingException("Please mention your user id");
 			} else if (userDao.searchUserById(user.getUserId()) == null) {
@@ -81,7 +83,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.verifyUser(userId);
 	}
 	public Family addOrUpdateFamily(FamilyDetailsDto family) {
-
+		family.getDob().plusDays(1);
 		Family familyMember = family.toFamily();
 		User user = userDao.getUserById(family.getUserId());
 
